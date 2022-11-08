@@ -2,3 +2,4 @@ node_modules/
 package-lock.json
 .eslintrc.json
 #dist/main.js
+webpack.config.js

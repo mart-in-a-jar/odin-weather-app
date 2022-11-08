@@ -1,17 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather app</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
-<!--     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Weather app</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="animation.css" />
+        <script src="main.js" defer></script>
+        <!--     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
     <link rel="manifest" href="img/favicon/site.webmanifest"> -->
-</head>
-<body>
-    
-</body>
+    </head>
+    <body>
+        <div class="weather">
+            <div class="loading">
+                <svg
+                    width="100"
+                    height="100"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <circle class="spinner_1KD7" cx="12" cy="3" r="0" />
+                    <circle
+                        class="spinner_1KD7 spinner_MJg4"
+                        cx="16.50"
+                        cy="4.21"
+                        r="0"
+                    />
+                    <circle
+                        class="spinner_1KD7 spinner_SeO7"
+                        cx="7.50"
+                        cy="4.21"
+                        r="0"
+                    />
+                    <circle
+                        class="spinner_1KD7 spinner_sj9X"
+                        cx="19.79"
+                        cy="7.50"
+                        r="0"
+                    />
+                    <circle
+                        class="spinner_1KD7 spinner_7he2"
+                        cx="4.21"
+                        cy="7.50"
+                        r="0"
+                    />
+                    <circle
+                        class="spinner_1KD7 spinner_WwCl"
+                        cx="21.00"
+                        cy="12.00"
+                        r="0"
+                    />
+                    <circle
+                        class="spinner_1KD7 spinner_4zOl"
+                        cx="3.00"
+                        cy="12.00"
+                        r="0"
+                    />
+                    <circle
+                        class="spinner_1KD7 spinner_vy2J"
+                        cx="19.79"
+                        cy="16.50"
+                        r="0"
+                    />
+                    <circle
+                        class="spinner_1KD7 spinner_kugV"
+                        cx="4.21"
+                        cy="16.50"
+                        r="0"
+                    />
+                    <circle
+                        class="spinner_1KD7 spinner_os1F"
+                        cx="16.50"
+                        cy="19.79"
+                        r="0"
+                    />
+                    <circle
+                        class="spinner_1KD7 spinner_WNEg"
+                        cx="7.50"
+                        cy="19.79"
+                        r="0"
+                    />
+                    <circle
+                        class="spinner_1KD7 spinner_l1Tw"
+                        cx="12"
+                        cy="21"
+                        r="0"
+                    />
+                </svg>
+            </div>
+            <img class="icon" src="" alt="" />
+            <p class="place"></p>
+            <p class="weather-description"></p>
+            <p>
+                Nåværende temperatur: <span class="current-temp"></span>&#8451;
+            </p>
+            <p>Føles som <span class="feels-like-temp"></span>&#8451;</p>
+            <p>Laveste: <span class="temp-min"></span>&#8451;</p>
+            <p>Høyeste: <span class="temp-max"></span>&#8451;</p>
+            <p>Lufttrykk: <span class="pressure"></span> hPa</p>
+            <p>Luftfuktighet: <span class="humidity"></span>%</p>
+            <p>Vind: <span class="wind-speed"></span> m/s</p>
+            <p>Soloppgang: <span class="sunrise"></span></p>
+            <p>Solnedgang: <span class="sunset"></span></p>
+            <p>Data hentet: <span class="timestamp"></span></p>
+        </div>
+    </body>
 </html>

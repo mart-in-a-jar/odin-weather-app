@@ -7,11 +7,11 @@ async function getWeatherData(searchString, latitude, longitude) {
         lat: latitude || "",
         lon: longitude || "",
         q: searchString || "",
+        units: "metric",
+        lang: "no",
     });
 
     const req = new Request(`${url}/data/2.5/weather?` + params);
-    console.log(req.url)
-
     try {
         const response = await fetch(req);
         const data = await response.json();
@@ -28,6 +28,5 @@ function getIcon(code, doubleSize = false) {
     const size = doubleSize ? "@2x" : "";
     return `http://openweathermap.org/img/wn/${code}${size}.png`;
 }
-
 
 export { getWeatherData, getIcon };

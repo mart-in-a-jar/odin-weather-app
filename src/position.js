@@ -9,15 +9,9 @@ async function getLocation() {
         const loc = await getPosition();
         return loc.coords;
     } catch (error) {
-        console.error(error);
         console.error(error.message);
+        throw new Error(error);
     }
 }
-
-let location;
-getLocation().then((r) => {
-    location = `Lat: ${r.coords.latitude} Lon: ${r.coords.longitude}`;
-    console.log(location);
-});
 
 export { getLocation };
