@@ -13,7 +13,23 @@
     <link rel="manifest" href="img/favicon/site.webmanifest"> -->
     </head>
     <body>
+        <input id="search" type="text" autocomplete="off">
         <div class="weather">
+            <img class="icon" src="" alt="" />
+            <p class="place"></p>
+            <p class="weather-description"></p>
+            <p>
+                Nåværende temperatur: <span class="current-temp"></span>&#8451;
+            </p>
+            <p>Føles som <span class="feels-like-temp"></span>&#8451;</p>
+            <p>Laveste: <span class="temp-min"></span>&#8451;</p>
+            <p>Høyeste: <span class="temp-max"></span>&#8451;</p>
+            <p>Lufttrykk: <span class="pressure"></span> hPa</p>
+            <p>Luftfuktighet: <span class="humidity"></span>%</p>
+            <p>Vind: <span class="wind-speed"></span> m/s</p>
+            <p>Soloppgang: <span class="sunrise"></span></p>
+            <p>Solnedgang: <span class="sunset"></span></p>
+            <p>Data hentet: <span class="timestamp"></span></p>
             <div class="loading">
                 <svg
                     width="100"
@@ -90,21 +106,6 @@
                     />
                 </svg>
             </div>
-            <img class="icon" src="" alt="" />
-            <p class="place"></p>
-            <p class="weather-description"></p>
-            <p>
-                Nåværende temperatur: <span class="current-temp"></span>&#8451;
-            </p>
-            <p>Føles som <span class="feels-like-temp"></span>&#8451;</p>
-            <p>Laveste: <span class="temp-min"></span>&#8451;</p>
-            <p>Høyeste: <span class="temp-max"></span>&#8451;</p>
-            <p>Lufttrykk: <span class="pressure"></span> hPa</p>
-            <p>Luftfuktighet: <span class="humidity"></span>%</p>
-            <p>Vind: <span class="wind-speed"></span> m/s</p>
-            <p>Soloppgang: <span class="sunrise"></span></p>
-            <p>Solnedgang: <span class="sunset"></span></p>
-            <p>Data hentet: <span class="timestamp"></span></p>
         </div>
     </body>
 </html>
