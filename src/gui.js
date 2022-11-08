@@ -19,4 +19,8 @@ function displayLoading() {
     spinner.classList.toggle("active");
 }
 
+/* function searchError() {
+
+} */
+
 export { displayLoading };

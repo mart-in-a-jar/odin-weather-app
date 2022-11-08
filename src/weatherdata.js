@@ -1,3 +1,5 @@
+import { ValidationError } from "webpack";
+
 const url = "https://api.openweathermap.org";
 const apiKey = "da08fae1c22e3a4e3c68411cf31f626c";
 
@@ -16,6 +18,9 @@ async function getWeatherData(searchString, latitude, longitude) {
         const response = await fetch(req);
         const data = await response.json();
         if (!response.ok) {
+            if (data.cod == 404) {
+                throw new ValidationError(data.message);
+            }
             throw new Error("Something went wront with api call");
         }
         return data;

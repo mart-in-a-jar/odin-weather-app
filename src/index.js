@@ -1,12 +1,15 @@
 import { getLocation } from "./position";
 import { getIcon, getWeatherData } from "./weatherdata";
 import { displayLoading, guiElements } from "./gui";
-import * as util from "./utils";
+// import * as util from "./utils";
 
 let coords = {};
 
 async function loadWeatherData(searchString, coords) {
     displayLoading();
+    if (!coords) {
+        coords = {};
+    }
     if (!searchString && (!coords.latitude || !coords.longitude)) {
         searchString = "Oslo";
     }
@@ -18,19 +21,19 @@ async function loadWeatherData(searchString, coords) {
 
     guiElements.weatherIcon.src = getIcon(weatherdata.weather[0].icon, true);
     guiElements.city.textContent = weatherdata.name;
-    guiElements.description.textContent = util.capitalize(
-        weatherdata.weather[0].description
-    );
-    guiElements.currentTemp.textContent = util.round(weatherdata.main.temp);
-    guiElements.feelsLike.textContent = util.round(weatherdata.main.feels_like);
-    guiElements.minTemp.textContent = util.round(weatherdata.main.temp_min);
-    guiElements.maxTemp.textContent = util.round(weatherdata.main.temp_max);
-    guiElements.pressure.textContent = weatherdata.main.pressure;
-    guiElements.humidity.textContent = weatherdata.main.humidity;
-    guiElements.windSpeed.textContent = weatherdata.wind.speed;
-    guiElements.sunrise.textContent = util.formatDate(weatherdata.sys.sunrise);
-    guiElements.sunset.textContent = util.formatDate(weatherdata.sys.sunset);
-    guiElements.timestamp.textContent = util.formatDate(weatherdata.dt);
+    // guiElements.description.textContent = util.capitalize(
+    //     weatherdata.weather[0].description
+    // );
+    // guiElements.currentTemp.textContent = util.round(weatherdata.main.temp);
+    // guiElements.feelsLike.textContent = util.round(weatherdata.main.feels_like);
+    // guiElements.minTemp.textContent = util.round(weatherdata.main.temp_min);
+    // guiElements.maxTemp.textContent = util.round(weatherdata.main.temp_max);
+    // guiElements.pressure.textContent = weatherdata.main.pressure;
+    // guiElements.humidity.textContent = weatherdata.main.humidity;
+    // guiElements.windSpeed.textContent = weatherdata.wind.speed;
+    // guiElements.sunrise.textContent = util.formatDate(weatherdata.sys.sunrise);
+    // guiElements.sunset.textContent = util.formatDate(weatherdata.sys.sunset);
+    // guiElements.timestamp.textContent = util.formatDate(weatherdata.dt);
 
     displayLoading();
 }
@@ -44,6 +47,13 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(() => {
             // Do nothing if user do not give location permission
         });
+});
+
+const searchField = document.querySelector("#search");
+searchField.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        loadWeatherData(searchField.value);
+    }
 });
 
 loadWeatherData(null, coords);
