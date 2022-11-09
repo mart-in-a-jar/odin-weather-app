@@ -1,5 +1,105 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding-top: 10%;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
 .weather {
+    border: 1px solid red;
     position: relative;
+    display: grid;
+    grid-template:
+        "header header header header header" 2fr
+        "desc   temp    air    wind   sun" 5fr
+        "footer footer footer footer footer" 1fr;
+    width: 40%;
+    border-radius: 20px;
+}
+
+.header {
+    grid-area: header;
+    display: grid;
+    grid-template-columns: 200px 300px 200px;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    background-color: rgba(62, 134, 243, 0.582);
+    color: white;
+}
+
+.error {
+    color: rgb(212, 84, 10);
+}
+
+.header .place {
+    font-size: 1.4rem;
+    text-align: end;
+}
+
+.header #search {
+    height: 2rem;
+    border-radius: 12px;
+    outline: none;
+    border: 2px solid rgba(52, 116, 136, 0.747);
+}
+
+.weather > *:nth-child(n+2):nth-child(-n+6) {
+    display: flex;
+    align-items: center;
+    justify-content: center;;
+}
+
+.desc {
+    flex-direction: column;
+    grid-area: desc;
+}
+
+.icon {
+    margin: -35px 0 -20px;
+}
+
+.temp {
+    grid-area: temp;
+    gap: 15px;
+}
+
+.temp .current {
+    font-size: 2rem;
+}
+
+.weather > * {
+    border: 1px solid green;
+}
+
+.air {
+    flex-direction: column;
+    grid-area: air;
+}
+
+.wind {
+    grid-area: wind;
+}
+
+.sun {
+    flex-direction: column;
+    grid-area: sun;
+}
+
+.timestamp-container {
+    grid-area: footer;
 }
 
 .loading {
@@ -11,6 +111,7 @@
     width: 100%;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .loading.active {
