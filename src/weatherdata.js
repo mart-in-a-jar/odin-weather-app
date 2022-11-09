@@ -12,19 +12,19 @@ async function getWeatherData(searchString, latitude, longitude) {
     });
 
     const req = new Request(`${url}/data/2.5/weather?` + params);
-    try {
+    // try {
         const response = await fetch(req);
         const data = await response.json();
         if (!response.ok) {
             if (data.cod == 404) {
-                throw new Error(data.message);
+                throw new EvalError(data.message);
             }
             throw new Error("Something went wront with api call");
         }
         return data;
-    } catch (error) {
-        console.error("Error ", error);
-    }
+    // } catch (error) {
+    //     console.error("Error ", error);
+    // }
 }
 
 function getIcon(code, doubleSize = false) {

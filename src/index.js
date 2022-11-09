@@ -1,11 +1,12 @@
 import { getLocation } from "./position";
 import { getIcon, getWeatherData } from "./weatherdata";
-import { displayLoading, guiElements } from "./gui";
-// import * as util from "./utils";
+import { displayLoading, guiElements, searchError } from "./gui";
+import * as util from "./utils";
 
 let coords = {};
 
 async function loadWeatherData(searchString, coords) {
+    document.querySelector(".error").textContent = "";
     displayLoading();
     if (!coords) {
         coords = {};
@@ -17,23 +18,27 @@ async function loadWeatherData(searchString, coords) {
         searchString,
         coords.latitude || null,
         coords.longitude || null
-    );
+    ).catch((e) => {
+        if (e.message === "city not found") {
+            searchError(e.message);
+            displayLoading();
+            throw new Error(e.message);
+        }
+    });
 
     guiElements.weatherIcon.src = getIcon(weatherdata.weather[0].icon, true);
     guiElements.city.textContent = weatherdata.name;
-    // guiElements.description.textContent = util.capitalize(
-    //     weatherdata.weather[0].description
-    // );
-    // guiElements.currentTemp.textContent = util.round(weatherdata.main.temp);
-    // guiElements.feelsLike.textContent = util.round(weatherdata.main.feels_like);
-    // guiElements.minTemp.textContent = util.round(weatherdata.main.temp_min);
-    // guiElements.maxTemp.textContent = util.round(weatherdata.main.temp_max);
-    // guiElements.pressure.textContent = weatherdata.main.pressure;
-    // guiElements.humidity.textContent = weatherdata.main.humidity;
-    // guiElements.windSpeed.textContent = weatherdata.wind.speed;
-    // guiElements.sunrise.textContent = util.formatDate(weatherdata.sys.sunrise);
-    // guiElements.sunset.textContent = util.formatDate(weatherdata.sys.sunset);
-    // guiElements.timestamp.textContent = util.formatDate(weatherdata.dt);
+    guiElements.description.textContent = util.capitalize(
+        weatherdata.weather[0].description
+    );
+    guiElements.currentTemp.textContent = util.round(weatherdata.main.temp);
+    guiElements.feelsLike.textContent = util.round(weatherdata.main.feels_like);
+    guiElements.pressure.textContent = weatherdata.main.pressure;
+    guiElements.humidity.textContent = weatherdata.main.humidity;
+    guiElements.windSpeed.textContent = weatherdata.wind.speed;
+    guiElements.sunrise.textContent = util.formatDate(weatherdata.sys.sunrise);
+    guiElements.sunset.textContent = util.formatDate(weatherdata.sys.sunset);
+    guiElements.timestamp.textContent = util.formatDate(weatherdata.dt);
 
     displayLoading();
 }

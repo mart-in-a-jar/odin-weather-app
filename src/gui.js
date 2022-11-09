@@ -1,11 +1,11 @@
+import { capitalize } from "./utils";
+
 export const guiElements = {
     weatherIcon: document.querySelector(".icon"),
     city: document.querySelector(".place"),
     description: document.querySelector(".weather-description"),
     currentTemp: document.querySelector(".current-temp"),
     feelsLike: document.querySelector(".feels-like-temp"),
-    minTemp: document.querySelector(".temp-min"),
-    maxTemp: document.querySelector(".temp-max"),
     pressure: document.querySelector(".pressure"),
     humidity: document.querySelector(".humidity"),
     windSpeed: document.querySelector(".wind-speed"),
@@ -19,8 +19,14 @@ function displayLoading() {
     spinner.classList.toggle("active");
 }
 
-/* function searchError() {
+function searchError(text) {
+    const warning = document.querySelector(".error");
+    warning.textContent = capitalize(text + "!");
+}
 
-} */
+export { displayLoading, searchError };
 
-export { displayLoading };
+
+// veksle mellom error message og vær-data
+// knapp for hent min posisjon
+// styling
