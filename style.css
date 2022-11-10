@@ -1,5 +1,6 @@
 html {
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 *,
@@ -15,38 +16,44 @@ body {
     padding-top: 10%;
     align-items: flex-start;
     min-height: 100vh;
+    background: linear-gradient(rgba(82, 146, 199, 0.76), white)
 }
 
 .weather {
-    border: 1px solid red;
     position: relative;
     display: grid;
     grid-template:
-        "header header header header header" 2fr
+        "header header header header header" 4fr
         "desc   temp    air    wind   sun" 5fr
         "footer footer footer footer footer" 1fr;
-    width: 40%;
+    /* width: 40%; */
     border-radius: 20px;
+    background-color: white;
 }
 
 .header {
     grid-area: header;
     display: grid;
-    grid-template-columns: 200px 300px 200px;
+    grid-template-columns: minmax(200px, auto) 300px 200px;
     align-items: center;
     justify-content: center;
     gap: 50px;
-    background-color: rgba(62, 134, 243, 0.582);
+    background-color: rgba(148, 103, 134, 0.534);
     color: white;
+    border-radius: 20px 20px 0 0;
+    padding: 0 30px;
 }
 
 .error {
     color: rgb(212, 84, 10);
 }
 
-.header .place {
+.header .place-wrapper {
     font-size: 1.4rem;
-    text-align: end;
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+    font-size: 2rem;
 }
 
 .header #search {
@@ -54,6 +61,7 @@ body {
     border-radius: 12px;
     outline: none;
     border: 2px solid rgba(52, 116, 136, 0.747);
+    width: 100%;
 }
 
 .weather > *:nth-child(n+2):nth-child(-n+6) {
@@ -68,7 +76,7 @@ body {
 }
 
 .icon {
-    margin: -35px 0 -20px;
+    margin: -15px 0 -20px;
 }
 
 .temp {
@@ -80,13 +88,22 @@ body {
     font-size: 2rem;
 }
 
-.weather > * {
-    border: 1px solid green;
+.feels-like-temp {
+    font-size: 0.8rem;
 }
 
 .air {
     flex-direction: column;
     grid-area: air;
+
+}
+
+.pressure,
+.humidity,
+.wind-speed,
+.sunrise,
+.sunset {
+    margin-left: 4px;
 }
 
 .wind {
@@ -96,10 +113,16 @@ body {
 .sun {
     flex-direction: column;
     grid-area: sun;
+    gap: 8px;
 }
 
 .timestamp-container {
     grid-area: footer;
+    padding: 0 10px 5px 0;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
 }
 
 .loading {
@@ -112,8 +135,50 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-radius: 20px;
 }
 
 .loading.active {
     display: flex;
+}
+
+
+.svg-inline--fa {
+    color: rgba(0, 0, 0, 0.658);
+}
+
+.country:empty {
+    display: none;
+}
+
+.country {
+    background-color: grey;
+    font-size: 2.3rem;
+}
+
+.locator {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.tooltip {
+    position: absolute;
+    right: -120px;
+    top: 1px;
+    background-color: rgba(128, 128, 128, 0.548);
+    padding: 5px;
+    border-radius: 8px;
+    font-weight: bold;
+    display: none;
+}
+
+.locator:hover ~ .tooltip {
+    display: block;
+}
+
+.search-wrapper {
+    position: relative;
 }

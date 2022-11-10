@@ -7,7 +7,10 @@
         <link rel="stylesheet" href="style.css" />
         <link rel="stylesheet" href="animation.css" />
         <script src="main.js" defer></script>
-        <script src="https://kit.fontawesome.com/6bbda76ee2.js" crossorigin="anonymous"></script>
+        <script
+            src="https://kit.fontawesome.com/6bbda76ee2.js"
+            crossorigin="anonymous"
+        ></script>
         <!--     <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
@@ -16,8 +19,18 @@
     <body>
         <div class="weather">
             <div class="header">
-                <div class="place"></div>
-                <input id="search" type="text" autocomplete="off" />
+                <div class="place-wrapper">
+                    <div class="place"></div>
+                    <div class="fa-layers">
+                        <i class="fa-duotone fa-earth-americas"></i>
+                        <i class="fa-layers-counter country"></i>
+                    </div>
+                </div>
+                <div class="search-wrapper">
+                    <input id="search" type="text" autocomplete="off" />
+                    <div class="locator"><i class="fa-light fa-location-dot"></i></div>
+                    <div class="tooltip">Your location</div>
+                </div>
                 <h2 class="error"></h2>
             </div>
             <div class="desc">
@@ -26,21 +39,39 @@
             </div>
             <div class="temp">
                 <div class="current">
-                    <i class="fal fa-thermometer-three-quarters"></i>
+                    <i class="fal fa-thermometer-three-quarters fa-xs"></i>
                     <span><span class="current-temp"></span>&deg;</span>
                 </div>
                 <div>
-                    Føles som <span><span class="feels-like-temp"></span>&deg;</span>
+                    Føles som
+                    <span><span class="feels-like-temp"></span>&deg;</span>
                 </div>
             </div>
             <div class="air">
-                <div>Lufttrykk: <span class="pressure"></span> hPa</div>
-                <div>Luftfuktighet: <span class="humidity"></span>%</div>
+                <div>
+                    <div>
+                        <i class="fa fa-gauge-high"></i
+                        ><span class="pressure"></span> hPa
+                    </div>
+                    <div>
+                        <i class="fa-light fa-droplet-percent fa-xl"></i
+                        ><span class="humidity"></span>%
+                    </div>
+                </div>
             </div>
-            <div class="wind">Vind: <span class="wind-speed"></span> m/s</div>
+            <div class="wind">
+                <i class="fa-regular fa-windsock fa-xl"></i
+                ><span class="wind-speed"></span> m/s
+            </div>
             <div class="sun">
-                <div>Soloppgang: <span class="sunrise"></span></div>
-                <div>Solnedgang: <span class="sunset"></span></div>
+                <div>
+                    <i class="fa-light fa-sunrise fa-xl"></i
+                    ><span class="sunrise"></span>
+                </div>
+                <div>
+                    <i class="fa-light fa-sunset fa-xl"></i
+                    ><span class="sunset"></span>
+                </div>
             </div>
             <div class="timestamp-container">
                 Data hentet: <span class="timestamp"></span>
