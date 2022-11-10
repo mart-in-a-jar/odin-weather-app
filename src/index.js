@@ -1,6 +1,11 @@
 import { getLocation } from "./position";
 import { getIcon, getWeatherData } from "./weatherdata";
-import { displayLoading, guiElements, searchError } from "./gui";
+import {
+    displayLoading,
+    guiElements,
+    searchError,
+    styleTemperature,
+} from "./gui";
 import * as util from "./utils";
 
 let coords = {};
@@ -39,6 +44,8 @@ async function loadWeatherData(searchString, coords) {
     guiElements.sunrise.textContent = util.formatDate(weatherdata.sys.sunrise);
     guiElements.sunset.textContent = util.formatDate(weatherdata.sys.sunset);
     guiElements.timestamp.textContent = util.formatDate(weatherdata.dt);
+
+    styleTemperature([guiElements.currentTemp, guiElements.feelsLike]);
 
     displayLoading();
 }

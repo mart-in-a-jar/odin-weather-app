@@ -24,8 +24,13 @@ function searchError(text) {
     warning.textContent = capitalize(text + "!");
 }
 
-export { displayLoading, searchError };
+function styleTemperature(elements) {
+    for (let ele of elements) {
+        ele.parentNode.style.color = ele.textContent > 0 ? "red" : "blue";
+    }
+}
 
+export { displayLoading, searchError, styleTemperature };
 
 // veksle mellom error message og vær-data
 // knapp for hent min posisjon
