@@ -44,13 +44,15 @@ async function loadWeatherData(searchString, coords) {
     guiElements.sunrise.textContent = util.formatDate(weatherdata.sys.sunrise);
     guiElements.sunset.textContent = util.formatDate(weatherdata.sys.sunset);
     guiElements.timestamp.textContent = util.formatDate(weatherdata.dt);
+    guiElements.country.textContent = weatherdata.sys.country;
 
     styleTemperature([guiElements.currentTemp, guiElements.feelsLike]);
 
     displayLoading();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+guiElements.locator.addEventListener("click", () => {
+    document.querySelector("#search").value = "";
     getLocation()
         .then((data) => {
             coords = data;
@@ -68,4 +70,6 @@ searchField.addEventListener("keydown", (e) => {
     }
 });
 
-loadWeatherData(null, coords);
+document.addEventListener("DOMContentLoaded", () => {
+    loadWeatherData(null, coords);
+});

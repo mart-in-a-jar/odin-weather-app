@@ -12,6 +12,8 @@ export const guiElements = {
     sunrise: document.querySelector(".sunrise"),
     sunset: document.querySelector(".sunset"),
     timestamp: document.querySelector(".timestamp"),
+    country: document.querySelector(".country"),
+    locator: document.querySelector(".locator")
 };
 
 function displayLoading() {
